@@ -83,14 +83,14 @@ Este proyecto sirve como un caso de estudio práctico sobre la implementación d
 ### Pasos para la Ejecución
 
 1.  **Clonar el repositorio:**
-    ```bash
-    git clone [https://github.com/Ferinjoque/formium.git](https://github.com/Ferinjoque/formium.git)
+    ```
+    git clone https://github.com/Ferinjoque/formium.git
     cd formium
     ```
 
 2.  **Compilar y ejecutar con Maven:**
     El proyecto está configurado con el plugin de JavaFX para Maven, lo que facilita su ejecución.
-    ```bash
+    ```
     mvn clean javafx:run
     ```
     Este comando compilará el proyecto y lanzará la aplicación.
@@ -111,11 +111,11 @@ Este proyecto sirve como un caso de estudio práctico sobre la implementación d
 
 | Vista de Login | Vista Principal (Catálogo) |
 | :---: | :---: |
-| ![Imagen de la vista de login](https://placehold.co/600x400/24292e/ffffff?text=Login) | ![Imagen del catálogo de productos](https://placehold.co/600x400/24292e/ffffff?text=Catálogo) |
+| ![Imagen de la vista de login](src/main/resources/login.png) | ![Imagen del catálogo de productos](src/main/resources/catalogo.png) |
 
 | Vista de Personalización | Panel de Administración |
 | :---: | :---: |
-| ![Imagen de la personalización de una prenda](https://placehold.co/600x400/24292e/ffffff?text=Personalización) | ![Imagen del panel de administración](https://placehold.co/600x400/24292e/ffffff?text=Admin+Panel) |
+| ![Imagen de la personalización de una prenda](src/main/resources/personalizacion.png) | ![Imagen del panel de administración](src/main/resources/admin-panel.png) |
 
 ---
 
