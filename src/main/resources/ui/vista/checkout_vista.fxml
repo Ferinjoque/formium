@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- VISTA DE CHECKOUT / PAGO -->
+<?import javafx.scene.control.ScrollPane?>
+<BorderPane prefHeight="700.0" prefWidth="600.0"
+            style="-fx-background-color: #F5F5F5;"
+            stylesheets="@styles.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.controlador.CheckoutControlador">
+
+    <!-- BARRA SUPERIOR CON BOTÓN DE REGRESO Y TÍTULO -->
+    <top>
+        <StackPane prefHeight="60.0" styleClass="header">
+            <children>
+                <Button text="← Volver"
+                        onAction="#handleVolver"
+                        styleClass="secondary-button"
+                        StackPane.alignment="CENTER_LEFT">
+                    <StackPane.margin><Insets left="20.0"/></StackPane.margin>
+                </Button>
+                <Label text="Finalizar Compra"
+                       styleClass="header-text"
+                       StackPane.alignment="CENTER"/>
+            </children>
+        </StackPane>
+    </top>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
+            <content>
+                <VBox alignment="TOP_CENTER" spacing="20.0">
+                    <padding><Insets top="20.0" bottom="20.0" left="40.0" right="40.0"/></padding>
+                    <children>
+
+                        <!-- TOTAL A PAGAR -->
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label text="Total a Pagar:" styleClass="content-title"/>
+                                <Label fx:id="lblTotalPagar"
+                                       text="S/0.00"
+                                       styleClass="content-title">
+                                    <HBox.margin><Insets left="10.0"/></HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+
+                        <Separator/>
+
+                        <!-- DATOS DE PAGO -->
+                        <GridPane hgap="15.0" vgap="10.0">
+                            <!-- Columnas -->
+                            <columnConstraints>
+                                <ColumnConstraints prefWidth="150.0"/>
+                                <ColumnConstraints prefWidth="300.0"/>
+                            </columnConstraints>
+
+                            <!-- Filas -->
+                            <rowConstraints>
+                                <RowConstraints/>
+                                <RowConstraints/>
+                                <RowConstraints/>
+                                <RowConstraints/>
+                            </rowConstraints>
+
+                            <children>
+                                <Label text="Método de Pago:" GridPane.halignment="RIGHT"/>
+                                <ComboBox fx:id="comboMetodoPago" prefWidth="350.0" GridPane.columnIndex="1"/>
+
+                                <Label text="Número de Tarjeta:" GridPane.rowIndex="1" GridPane.halignment="RIGHT"/>
+                                <TextField fx:id="txtNumeroTarjeta"
+                                           promptText="**** **** **** ****"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="Fecha de Expiración:" GridPane.rowIndex="2" GridPane.halignment="RIGHT"/>
+                                <HBox spacing="10.0" alignment="CENTER_LEFT"
+                                      GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <children>
+                                        <ComboBox fx:id="comboMesExpiracion" prefWidth="100.0" promptText="Mes"/>
+                                        <ComboBox fx:id="comboAnioExpiracion" prefWidth="100.0" promptText="Año"/>
+                                    </children>
+                                </HBox>
+
+                                <Label text="Código de Seguridad:" GridPane.rowIndex="3" GridPane.halignment="RIGHT"/>
+                                <PasswordField fx:id="txtCVV"
+                                               promptText="CVV"
+                                               prefWidth="80.0"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                            </children>
+                        </GridPane>
+
+                        <Separator/>
+
+                        <!-- DATOS DE ENVÍO -->
+                        <GridPane hgap="15.0" vgap="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints prefWidth="150.0"/>
+                                <ColumnConstraints prefWidth="300.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/><RowConstraints/><RowConstraints/><RowConstraints/>
+                                <RowConstraints/><RowConstraints/><RowConstraints/>
+                            </rowConstraints>
+
+                            <children>
+                                <Label text="Nombre:"/>
+                                <TextField fx:id="txtNombre" GridPane.columnIndex="1"/>
+
+                                <Label text="Apellido:" GridPane.rowIndex="1"/>
+                                <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="Ciudad:" GridPane.rowIndex="2"/>
+                                <TextField fx:id="txtCiudad" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                <Label text="Dirección:" GridPane.rowIndex="3"/>
+                                <TextField fx:id="txtDireccion" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                                <Label text="Código Postal:" GridPane.rowIndex="4"/>
+                                <TextField fx:id="txtCodigoPostal" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                                <Label text="País:" GridPane.rowIndex="5"/>
+                                <TextField fx:id="txtPais"
+                                           text="Perú"
+                                           disable="true"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                                <Label text="Número de Teléfono:" GridPane.rowIndex="6"/>
+                                <TextField fx:id="txtTelefono"
+                                           promptText="987654321"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- BOTÓN DE PAGO -->
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="80.0">
+            <children>
+                <Button fx:id="btnPagar"
+                        text="Pagar Ahora"
+                        onAction="#handlePagarAhora"
+                        prefWidth="300.0"
+                        prefHeight="50.0"
+                        styleClass="cta-button"
+                        disable="true"/>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controlador.PrincipalControlador">
+    <top>
+        <HBox alignment="CENTER" prefHeight="60.0" styleClass="header">
+            <children>
+                <Label styleClass="header-text" text="FORMIUM - Tienda de Diseño" />
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox alignment="CENTER" prefWidth="340.0" spacing="10.0" styleClass="sidebar">
+            <children>
+                <Button mnemonicParsing="false" onAction="#mostrarMisPedidos" prefWidth="240.0" styleClass="secondary-button" text="Mis Pedidos" />
+                <Button fx:id="btnPanelAdmin" managed="${btnPanelAdmin.visible}" mnemonicParsing="false" onAction="#mostrarPanelAdmin" prefWidth="240.0" styleClass="secondary-button" text="Panel de Admin" visible="false" />
+                <Button mnemonicParsing="false" onAction="#handleCerrarSesion" prefWidth="240.0" styleClass="delete-button" text="Cerrar Sesión" />
+                <Separator prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                </Separator>
+                <VBox alignment="CENTER" styleClass="card" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                    </padding>
+                    <children>
+                        <BorderPane>
+                            <center>
+                                <Label styleClass="sidebar-title" text="Mi Carrito" BorderPane.alignment="CENTER_LEFT" />
+                            </center>
+                            <right>
+                                <Button fx:id="btnVaciarCarrito" mnemonicParsing="false" onAction="#vaciarCarrito" styleClass="icon-delete-button" text="X" BorderPane.alignment="CENTER" />
+                            </right>
+                            <VBox.margin>
+                                <Insets bottom="10.0" />
+                            </VBox.margin>
+                        </BorderPane>
+                        <ListView fx:id="listaCarrito" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="40.0">
+                            <children>
+                                <Label styleClass="secondary-label" text="Total:">
+                                    <HBox.margin>
+                                        <Insets right="5.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Label fx:id="lblTotalCarrito" styleClass="sidebar-label" text="S/0.00" />
+                            </children>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#procederAlPago" prefWidth="250.0" styleClass="cta-button" text="Proceder al Pago">
+                            <VBox.margin>
+                                <Insets top="15.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label styleClass="content-title" text="Productos Disponibles" HBox.hgrow="ALWAYS" />
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="15.0" />
+                    </VBox.margin>
+                </HBox>
+                <VBox styleClass="card" VBox.vgrow="ALWAYS">
+                    <children>
+                        <ListView fx:id="listaProductos" />
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="60.0" spacing="10.0">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                    <children>
+                        <Button fx:id="btnPersonalizar" mnemonicParsing="false" onAction="#personalizarProducto" styleClass="cta-button" text="Personalizar Producto" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

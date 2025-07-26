@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- ADMIN PRODUCTOS VIEW -->
+<SplitPane dividerPositions="0.4"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ui.controlador.AdminProductosControlador">
+
+    <items>
+
+        <!-- ================== PANEL IZQUIERDO: LISTA DE PRODUCTOS ================== -->
+        <VBox spacing="10.0">
+            <children>
+
+                <!-- Título de la lista -->
+                <Label styleClass="sidebar-title"
+                       text="Productos del Catálogo"/>
+
+                <!-- ListView con todos los productos -->
+                <ListView fx:id="listaProductosAdmin"
+                          VBox.vgrow="ALWAYS"/>
+            </children>
+
+            <padding><Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/></padding>
+        </VBox>
+
+        <!-- ================== PANEL DERECHO: FORMULARIO DE DETALLES ================== -->
+        <VBox alignment="TOP_CENTER" spacing="20.0">
+            <children>
+
+                <!-- Título del formulario -->
+                <Label styleClass="content-title"
+                       text="Detalles del Producto"/>
+
+                <!-- GRID PRINCIPAL -->
+                <GridPane hgap="10.0" vgap="15.0">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="120.0"/>
+                        <ColumnConstraints prefWidth="300.0"/>
+                    </columnConstraints>
+
+                    <children>
+
+                        <!-- Nombre -->
+                        <Label text="Nombre:" GridPane.halignment="RIGHT" GridPane.rowIndex="0"/>
+                        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                        <!-- Descripción -->
+                        <Label text="Descripción:" GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
+                        <TextArea fx:id="txtDescripcion" prefHeight="80.0" wrapText="true"
+                                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                        <!-- Precio -->
+                        <Label text="Precio Base:" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
+                        <TextField fx:id="txtPrecioBase" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                        <!-- Tipo -->
+                        <Label text="Tipo de Producto:" GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
+                        <ComboBox fx:id="comboTipoProducto" prefWidth="300.0"
+                                  GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                        <!-- SUB-GRID DE PARÁMETROS ESPECÍFICOS -->
+                        <GridPane fx:id="gridParametrosEspecificos" hgap="10.0" vgap="15.0"
+                                  GridPane.columnSpan="2" GridPane.rowIndex="4">
+                            <columnConstraints>
+                                <ColumnConstraints prefWidth="120.0"/>
+                                <ColumnConstraints prefWidth="300.0"/>
+                            </columnConstraints>
+
+                            <children>
+                                <!-- Param 1 -->
+                                <Label fx:id="lblParam1" text="Parámetro 1:" GridPane.halignment="RIGHT" GridPane.rowIndex="0"/>
+                                <ComboBox fx:id="comboParam1" prefWidth="300.0"
+                                          GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <!-- Param 2 -->
+                                <Label fx:id="lblParam2" text="Parámetro 2:" GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
+                                <ComboBox fx:id="comboParam2" prefWidth="300.0"
+                                          GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <!-- Param 3 -->
+                                <Label fx:id="lblParam3" text="Parámetro 3:" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
+                                <ComboBox fx:id="comboParam3" prefWidth="300.0"
+                                          GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                            </children>
+                        </GridPane>
+                    </children>
+                </GridPane>
+
+                <!-- BOTONES DE ACCIÓN -->
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button onAction="#handleNuevo"   styleClass="secondary-button" text="Nuevo"/>
+                        <Button fx:id="btnGuardar" onAction="#handleGuardar"
+                                styleClass="confirm-button" text="Guardar Cambios"/>
+                        <Button onAction="#handleEliminar" styleClass="delete-button"
+                                text="Eliminar Producto"/>
+                    </children>
+                </HBox>
+            </children>
+
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+        </VBox>
+    </items>
+</SplitPane>

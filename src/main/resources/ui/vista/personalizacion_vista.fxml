@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<!-- ==================== PANTALLA DE PERSONALIZACIÓN ==================== -->
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.controlador.PersonalizacionControlador"
+            prefHeight="700.0" prefWidth="1000.0"
+            stylesheets="@styles.css">
+
+    <!-- CABECERA -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" styleClass="header">
+            <padding><Insets left="20" right="20"/></padding>
+            <children>
+                <Button text="← Regresar"
+                        styleClass="secondary-button"
+                        onAction="#regresarPrincipal"/>
+                <Label fx:id="lblNombreProducto"
+                       text="Personalizar Producto"
+                       styleClass="header-text">
+                    <HBox.margin><Insets left="25"/></HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- SIDEBAR IZQUIERDO -->
+    <left>
+        <VBox prefWidth="350" styleClass="sidebar">
+            <children>
+
+                <!-- SCROLL DE TARJETAS -->
+                <ScrollPane fx:id="scrollHerr"
+                            fitToWidth="true"
+                            VBox.vgrow="ALWAYS"
+                            hbarPolicy="NEVER"
+                            style="-fx-background-color:transparent;">
+                    <content>
+                        <VBox spacing="15">
+
+                            <!-- TARJETA: DETALLES PRODUCTO -->
+                            <VBox styleClass="card">
+                                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                                <children>
+                                    <Label text="Detalles del Producto"
+                                           styleClass="sidebar-title"/>
+
+                                    <Separator>
+                                        <VBox.margin><Insets top="5" bottom="10"/></VBox.margin>
+                                    </Separator>
+
+                                    <!-- GRID DESCRIPCIÓN + VARIANTES -->
+                                    <GridPane fx:id="gridDetallesProducto" hgap="10" vgap="8">
+                                        <columnConstraints>
+                                            <ColumnConstraints minWidth="80"/>
+                                            <ColumnConstraints hgrow="SOMETIMES"/>
+                                        </columnConstraints>
+
+                                        <!-- DESCRIPCIÓN -->
+                                        <Label fx:id="lblDescripcionProducto"
+                                               styleClass="secondary-label"
+                                               wrapText="true"
+                                               text="Descripción del producto aquí..."
+                                               GridPane.columnSpan="2"/>
+
+                                        <!-- TALLA -->
+                                        <Label text="Talla:" styleClass="sidebar-label"
+                                               GridPane.rowIndex="1"/>
+                                        <ComboBox fx:id="comboTalla"
+                                                  onAction="#onVariantChanged"
+                                                  maxWidth="Infinity"
+                                                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                        <!-- COLOR -->
+                                        <Label text="Color:" styleClass="sidebar-label"
+                                               GridPane.rowIndex="2"/>
+                                        <ComboBox fx:id="comboColor"
+                                                  onAction="#onVariantChanged"
+                                                  maxWidth="Infinity"
+                                                  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <!-- DESGLOSE PRECIOS -->
+                                    <VBox spacing="5">
+                                        <padding><Insets top="15"/></padding>
+                                        <children>
+                                            <Separator/>
+                                            <GridPane hgap="10" vgap="4">
+                                                <columnConstraints>
+                                                    <ColumnConstraints halignment="LEFT"/>
+                                                    <ColumnConstraints halignment="RIGHT"/>
+                                                </columnConstraints>
+
+                                                <Label text="Precio Base:"               GridPane.rowIndex="0"/>
+                                                <Label fx:id="lblPrecioBase"   text="S/ 0.00" style="-fx-font-weight:bold;" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                                <Label text="Extra por Texto:"          GridPane.rowIndex="1"/>
+                                                <Label fx:id="lblExtraTexto"   text="+ S/ 0.00" style="-fx-font-weight:bold;" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                                <Label text="Extra por Imagen:"         GridPane.rowIndex="2"/>
+                                                <Label fx:id="lblExtraImagen" text="+ S/ 0.00" style="-fx-font-weight:bold;" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                                <Label text="" GridPane.rowIndex="3"/>
+
+                                                <Label text="TOTAL:" styleClass="sidebar-title" GridPane.rowIndex="4"/>
+                                                <Label fx:id="lblPrecioTotal" text="S/ 0.00" styleClass="sidebar-title" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                            </GridPane>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </VBox>
+
+                            <!-- TARJETA: HERRAMIENTAS -->
+                            <VBox fx:id="panelDeHerramientas" spacing="15" styleClass="card">
+                                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                                <children>
+                                    <Label text="Herramientas" styleClass="sidebar-title"/>
+
+                                    <!-- PASO 1 -->
+                                    <Label text="1. Elige el Tipo de Diseño" styleClass="sidebar-label"/>
+                                    <ChoiceBox fx:id="tipoDeDisenoSelector" maxWidth="Infinity"/>
+
+                                    <Separator/>
+
+                                    <!-- PASO 2 -->
+                                    <Label text="2. Define el Contenido" styleClass="sidebar-label"/>
+
+                                    <!-- CONTROLES TEXTO -->
+                                    <VBox fx:id="controlesTexto" spacing="10">
+                                        <children>
+                                            <Label text="Texto a mostrar:" styleClass="secondary-label"/>
+                                            <TextField fx:id="txtTextoPersonalizado" promptText="Escribe tu texto aquí"/>
+
+                                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Fuente:" styleClass="secondary-label"/>
+                                                        <ComboBox fx:id="txtFuenteTexto" prefWidth="150" promptText="Fuente"/>
+                                                    </children>
+                                                </VBox>
+                                                <VBox>
+                                                    <children>
+                                                        <Label text="Color:" styleClass="secondary-label"/>
+                                                        <ColorPicker fx:id="txtColorTexto" prefWidth="120"/>
+                                                    </children>
+                                                </VBox>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+
+                                    <!-- CONTROLES IMAGEN -->
+                                    <VBox fx:id="controlesImagen" spacing="10" managed="false" visible="false">
+                                        <children>
+                                            <Label text="Imagen de la Biblioteca:" styleClass="secondary-label"/>
+                                            <ComboBox fx:id="selectorDeImagen" promptText="Seleccionar imagen..." maxWidth="Infinity"/>
+                                        </children>
+                                    </VBox>
+
+                                    <Separator><VBox.margin><Insets top="10"/></VBox.margin></Separator>
+
+                                    <Button fx:id="btnAnadirOEditar"
+                                            text="Añadir Diseño"
+                                            styleClass="cta-button"
+                                            onAction="#aplicarDiseno"
+                                            maxWidth="Infinity"/>
+                                    <Button fx:id="btnEliminar"
+                                            text="Eliminar Diseño"
+                                            styleClass="delete-button"
+                                            onAction="#eliminarDiseno"
+                                            visible="false"
+                                            maxWidth="Infinity"/>
+                                </children>
+                            </VBox>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <!-- BARRA INFERIOR -->
+                <Separator/>
+                <VBox alignment="CENTER" spacing="10">
+                    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                    <children>
+                        <HBox alignment="CENTER" spacing="10">
+                            <Button fx:id="btnDeshacer" text="Deshacer"
+                                    styleClass="secondary-button"
+                                    onAction="#deshacerUltimaAccion"
+                                    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                            <Button fx:id="btnRehacer" text="Rehacer"
+                                    styleClass="secondary-button"
+                                    onAction="#rehacerUltimaAccion"
+                                    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        </HBox>
+                        <Button text="✔ Confirmar y Añadir al Carrito"
+                                styleClass="confirm-button"
+                                onAction="#confirmarPersonalizacion"
+                                maxWidth="Infinity"/>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+
+    <!-- CENTRO <> PREVIEW PRODUCTO -->
+    <center>
+        <VBox spacing="15" alignment="TOP_CENTER" style="-fx-padding: 20;">
+            <children>
+                <Label text="Vista Previa del Producto" styleClass="content-title"/>
+                <StackPane fx:id="lienzoProducto"
+                           alignment="CENTER"
+                           styleClass="preview-pane"
+                           VBox.vgrow="ALWAYS">
+                    <children>
+                        <ImageView fx:id="imagenProducto" preserveRatio="true" pickOnBounds="true"/>
+                        <ImageView fx:id="imagenColorOverlay" preserveRatio="true" mouseTransparent="true" pickOnBounds="true">
+                            <effect><ColorAdjust/></effect>
+                        </ImageView>
+                    </children>
+                </StackPane>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

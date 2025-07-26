@@ -1,0 +1,174 @@
+/*=====================================================================
+  FORMIUM ▸  Hoja de estilos principal
+  Diseño limpio y moderno – v2
+ =====================================================================*/
+
+/*──────────────────────────────────────────────────────────────────────
+  1.  Configuración global
+ ─────────────────────────────────────────────────────────────────────*/
+.root {
+    -fx-font-family        : "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+    -fx-background-color   : #F5F5F5;     /* Blanco roto */
+    -fx-font-smoothing-type: lcd;
+}
+
+/*──────────────────────────────────────────────────────────────────────
+  2.  Tipografías y títulos
+ ─────────────────────────────────────────────────────────────────────*/
+.header-text {
+    -fx-font-size  : 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill  : #5E35B1;             /* Índigo profesional */
+}
+.content-title {
+    -fx-font-size  : 20px;
+    -fx-font-weight: 600;
+    -fx-text-fill  : #212121;             /* Gris oscuro */
+}
+.sidebar-title {
+    -fx-font-size  : 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill  : #212121;
+}
+.sidebar-label {
+    -fx-font-size  : 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill  : #212121;
+}
+.secondary-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #757575;               /* Gris medio */
+}
+
+/*──────────────────────────────────────────────────────────────────────
+  3.  Contenedores principales
+ ─────────────────────────────────────────────────────────────────────*/
+.header {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color    : transparent transparent #E0E0E0 transparent; /* Borde inferior sutil */
+    -fx-border-width    : 1px;
+}
+.sidebar {
+    -fx-background-color: #F5F5F5;
+    -fx-border-color    : transparent #E0E0E0 transparent transparent;  /* Borde derecho sutil */
+    -fx-border-width    : 1px;
+    -fx-padding         : 20px;
+    -fx-spacing         : 15px;
+}
+.card,
+.preview-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-radius   : 8px;
+    -fx-border-color    : #E0E0E0;
+    -fx-border-width    : 1px;
+}
+.card         { -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2); }
+.preview-pane { -fx-padding: 15px; }
+
+/*──────────────────────────────────────────────────────────────────────
+  4.  Botones
+ ─────────────────────────────────────────────────────────────────────*/
+.button {
+    -fx-font-size      : 14px;
+    -fx-font-weight    : bold;
+    -fx-background-radius: 6px;
+    -fx-padding        : 10px 20px;
+    -fx-cursor         : hand;
+}
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 2);
+}
+
+/* Botones de acción */
+.cta-button       { -fx-background-color: #AD1457; -fx-text-fill: #FFFFFF; }
+.cta-button:hover { -fx-background-color: #880E4F; }
+
+.secondary-button       { -fx-background-color: #E0E0E0; -fx-text-fill: #212121; }
+.secondary-button:hover { -fx-background-color: #BDBDBD; }
+
+.confirm-button       { -fx-background-color: #2E7D32; -fx-text-fill: #FFFFFF; }
+.confirm-button:hover { -fx-background-color: #1B5E20; }
+
+.delete-button       { -fx-background-color: #D32F2F; -fx-text-fill: #FFFFFF; }
+.delete-button:hover { -fx-background-color: #B71C1C; }
+
+/*──────────────────────────────────────────────────────────────────────
+  5.  ListView y celdas
+ ─────────────────────────────────────────────────────────────────────*/
+.list-view {
+    -fx-border-width   : 0;
+    -fx-background-color: transparent;
+}
+.list-cell {
+    -fx-padding         : 12px 10px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 6px;
+    -fx-font-size       : 14px;
+    -fx-text-fill       : #212121;
+}
+.list-cell:filled:hover      { -fx-background-color: #ECEFF1; }
+.list-cell:filled:selected   { -fx-background-color: #5E35B1; -fx-text-fill: #FFFFFF; }
+
+/*──────────────────────────────────────────────────────────────────────
+  6.  Campos de formulario
+ ─────────────────────────────────────────────────────────────────────*/
+.text-field,
+.combo-box,
+.choice-box {
+    -fx-font-size       : 14px;
+    -fx-background-radius: 6px;
+    -fx-border-radius   : 6px;
+    -fx-border-color    : #BDBDBD;
+    -fx-background-color: #FFFFFF;
+    -fx-border-width    : 1.5px;
+}
+.text-field:focused,
+.combo-box:focused,
+.choice-box:focused {
+    -fx-border-color: #5E35B1;
+    -fx-effect      : dropshadow(gaussian, rgba(94,53,177,0.3), 10, 0, 0, 0);
+}
+
+/* Popup de combo-box */
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color    : #E0E0E0;
+    -fx-border-width    : 1px;
+    -fx-background-insets: 0;
+    -fx-background-radius: 6px;
+    -fx-border-radius   : 6px;
+    -fx-effect          : dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
+}
+.combo-box-popup .list-cell          { -fx-background-color: #FFFFFF; -fx-padding: 8px 12px; }
+.combo-box-popup .list-cell:hover    { -fx-background-color: #ECEFF1; }
+.combo-box-popup .list-cell:filled:selected { -fx-background-color: #5E35B1; -fx-text-fill: #FFFFFF; }
+
+/*──────────────────────────────────────────────────────────────────────
+  7.  Botón de eliminación compacto
+ ─────────────────────────────────────────────────────────────────────*/
+.icon-delete-button {
+    -fx-background-color: #ECEFF1;
+    -fx-text-fill       : #616161;
+    -fx-font-size       : 10px;
+    -fx-font-weight     : bold;
+    -fx-background-radius: 100;  /* Botón circular */
+    -fx-padding         : 0;
+    -fx-pref-width      : 22px;
+    -fx-pref-height     : 22px;
+}
+.icon-delete-button:hover {
+    -fx-background-color: #D32F2F;   /* Rojo de eliminar */
+    -fx-text-fill       : #FFFFFF;
+}
+
+/*──────────────────────────────────────────────────────────────────────
+  8.  ScrollBars y estados especiales
+ ─────────────────────────────────────────────────────────────────────*/
+#listaCarrito .scroll-bar:horizontal {
+    -fx-opacity   : 0;
+    -fx-max-height: 0;
+}
+
+.producto-agotado            { -fx-text-fill: #9E9E9E; -fx-font-style: italic; }
+.producto-agotado:selected   { -fx-text-fill: #FFFFFF; }

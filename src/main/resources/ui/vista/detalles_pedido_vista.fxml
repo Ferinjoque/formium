@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- VISTA DE DETALLES DE PEDIDO -->
+<BorderPane prefHeight="600.0" prefWidth="800.0"
+            style="-fx-background-color: #F5F5F5;"
+            stylesheets="@styles.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.controlador.DetallesPedidoControlador">
+
+    <!-- ENCABEZADO SUPERIOR -->
+    <top>
+        <VBox style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-width: 0 0 1 0;"
+              BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="lblIdPedido"
+                       text="Detalles del Pedido: PED_ABC123"
+                       styleClass="header-text">
+                    <padding><Insets top="10.0" bottom="10.0" left="20.0"/></padding>
+                </Label>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- CUERPO PRINCIPAL -->
+    <center>
+        <VBox spacing="20.0">
+            <padding><Insets top="20.0" bottom="20.0" left="20.0" right="20.0"/></padding>
+            <children>
+
+                <!-- METADATOS DEL PEDIDO -->
+                <GridPane hgap="10.0">
+                    <children>
+                        <Label text="Estado:"               styleClass="sidebar-label" GridPane.halignment="RIGHT"/>
+                        <Label fx:id="lblEstado" text="PROCESANDO" GridPane.columnIndex="1"/>
+
+                        <Label text="Fecha:"                styleClass="sidebar-label" GridPane.rowIndex="1" GridPane.halignment="RIGHT"/>
+                        <Label fx:id="lblFecha"  text="22/06/2025" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                        <Label text="Total Pagado:"         styleClass="sidebar-label" GridPane.rowIndex="2" GridPane.halignment="RIGHT"/>
+                        <Label fx:id="lblTotal"  text="S/ 120.50"   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    </children>
+                </GridPane>
+
+                <!-- TÍTULO DE SECCIÓN -->
+                <Label text="Productos Incluidos:" styleClass="content-title"/>
+
+                <!-- LISTA DE ITEMS -->
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox fx:id="contenedorItems" spacing="15.0"/>
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
