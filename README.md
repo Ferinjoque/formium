@@ -1,3 +1,16 @@
+> [!TIP]
+> # 📘 Caso de Estudio de Arquitectura (2025)
+> 
+> ![Status](https://img.shields.io/badge/Estado-Completado_(Archivado)-success?style=flat-square) ![Focus](https://img.shields.io/badge/Enfoque-Patrones_GoF-blueviolet?style=flat-square)
+>
+> **Este repositorio ha sido archivado tras su finalización en Julio de 2025.**
+>
+> Se mantiene público como un **recurso de referencia académica** sobre la implementación práctica de **Patrones de Diseño (GoF)** en aplicaciones empresariales Java.
+>
+> **Destacado:** Revisa la sección [Patrones de Diseño Aplicados](#-patrones-de-diseño-aplicados) para ver implementaciones reales de *Memento, Observer, Command y Abstract Factory*.
+
+---
+
 # FORMIUM - Sistema de Tienda de Ropa Personalizable
 
 **Versión:** 1.0.0  
